@@ -1,0 +1,53 @@
+.YjBos3D_spin_wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.YjBos3D_wrapper {
+  width: 100%;
+  height: 100%;
+}
+
+.yj_bos3D_getViewBtn {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateY(-50%);
+  transform: translateX(-50%);
+  z-index: 10000;
+}
+
+.YjBos3D_legend_wrapper {
+  position: absolute;
+  top: 50%;
+  right: 5%;
+  transform: translateY(-50%);
+  z-index: 10000;
+  color: #fff;
+
+  > .YjBos3D_legend_title {
+    font-size: 30px;
+  }
+
+  > .YjBos3D_legend_body {
+    margin-top: 30px;
+
+    .YjBos3D_legend_color {
+      display: flex;
+      align-items: center;
+
+      > .color-wrapper {
+        width: 60px;
+        height: 30px;
+      }
+
+      > .label-wrapper {
+        padding-left: 10px;
+      }
+    }
+  }
+}

@@ -1,7 +1,18 @@
 {
   "name": "react-bos3d",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
+  "description": "基于typescript + react hook 封装的Bos3D ---- 公司内部使用，此库只是对使用方法进行封装，核心库需自己手动引入 ",
+  "license": "MIT",
+  "keywords": [
+    "BOS",
+    "BOS3D"
+  ],
+  "homepage": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
@@ -10,6 +21,7 @@
     "@types/node": "^12.0.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
+    "classnames": "^2.2.6",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-scripts": "3.4.3",
@@ -20,6 +32,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
+  },
+  "author": {
+    "name": "惠思雨",
+    "email": "huisiyu@bimwinner.com"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +51,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/classnames": "^2.2.10"
   }
 }
