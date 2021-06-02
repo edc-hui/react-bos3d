@@ -8,30 +8,32 @@
     "BOS",
     "BOS3D"
   ],
-  "homepage": "",
+  "homepage": "https://github.com/edc-hui/react-bos3d",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/edc-hui/react-bos3d"
   },
+  "files": [
+    "dist"
+  ],
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.9.0",
-    "@types/react-dom": "^16.9.0",
-    "classnames": "^2.2.6",
-    "react": "^16.13.1",
-    "react-dom": "^16.13.1",
-    "react-scripts": "3.4.3",
-    "typescript": "~3.7.2"
+    "classnames": "^2.2.6"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "clean": "rimraf ./dist",
+    "build": "yarn clean && yarn dist-ts && yarn dist-css",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dist-ts": "tsc -p tsconfig.build.json",
+    "dist-css": "lessc ./src/less/index.less ./dist/index.css",
+    "prepublish": "npm run build"
   },
   "author": {
     "name": "惠思雨",
@@ -53,6 +55,23 @@
     ]
   },
   "devDependencies": {
-    "@types/classnames": "^2.2.10"
+    "@types/classnames": "^2.2.10",
+    "@types/jest": "^24.0.0",
+    "@types/node": "^12.0.0",
+    "@types/react": "^16.9.0",
+    "@types/react-dom": "^16.9.0",
+    "less": "^3.12.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-scripts": "3.4.3",
+    "rimraf": "^3.0.2",
+    "typescript": "~3.7.2"
+  },
+  "peerDependencies": {
+    "react": ">=16.9.0",
+    "react-dom": ">=16.9.0"
+  },
+  "publishConfig": {
+    "registry": "https://registry.yarnpkg.com"
   }
 }

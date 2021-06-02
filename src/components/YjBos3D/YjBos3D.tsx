@@ -71,6 +71,7 @@ export interface IYjBos3DProps {
   loadCompleteFinal?: boolean;
   onCameraChange?: (viewer3D: any, event: any) => any;
   onLoadConfigFinish?: (viewer3D: any, event: any) => any;
+  onSelectionChanged?: (viewer3D: any, event: any) => any;
   onClickPick?: (
     viewer3D: any,
     componentParams: componentParamsProps,
@@ -85,7 +86,7 @@ export interface IYjBos3DProps {
   flyToView?: flyToViewProps;
   spriteMark?: spriteMarkProps[];
   spriteMarkOnSelect?: (SpriteMark: any, e: any) => any;
-  colorFulData?: colorFulProps;
+  colorFulData?: colorFulProps | null;
   legend?: boolean;
   defaultInvisibleComponentType?: 'IfcOpeningElement' | 'IfcSpace' | '房间';
 }
@@ -193,6 +194,7 @@ const YjBos3D: React.FC<IYjBos3DProps> = props => {
           props.id ? props.id : 'viewport',
         ) as HTMLDivElement;
         viewportDOM.innerHTML = '';
+        viewer3D.viewerImpl.unloadAll();
       }
 
       // ------------------------实例化bos3D对象之前的控制开始---------------------------
@@ -292,6 +294,7 @@ const YjBos3D: React.FC<IYjBos3DProps> = props => {
           props.id ? props.id : 'viewport',
         ) as HTMLDivElement;
         viewportDOM.innerHTML = '';
+        viewer3D.viewerImpl.unloadAll();
       }
 
       // ------------------------实例化bos3D对象之前的控制开始---------------------------
@@ -428,6 +431,11 @@ const YjBos3D: React.FC<IYjBos3DProps> = props => {
         },
       );
 
+      // 构件高亮选中的监听事件
+      viewer3D.registerModelEventListener(BOS3D.EVENTS.ON_SELECTION_CHANGED, (event: any) => {
+        props.onSelectionChanged && props.onSelectionChanged(viewer3D, event);
+      })
+
       // ----------------------模型的各种事件监听结束-----------------------
     } else {
       console.error('modelKey是一个空数组');
@@ -517,7 +525,7 @@ YjBos3D.defaultProps = {
   axisHelper: false,
   loadCompleteFinal: false,
   legend: true,
-
+  colorFulData: null
 }
 
 export default YjBos3D;
@@ -589,7 +597,7 @@ export default YjBos3D;
 //       componentKeyArr.push(obj);
 //     }
 //
-//     for (let i = 0; i < componentKeyArr.length; i++) {
+//     for (let i = 0; i < componentKeyArr.length; i++) {w
 //       // @ts-ignore
 //       for (let j = 0; j < componentKeyArr[i].componentKey.length; j++) {
 //         viewer3D.getComponentsAttributeByKey(
